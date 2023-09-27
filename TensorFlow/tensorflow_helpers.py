@@ -27,15 +27,21 @@ def create_tensorboard_callback(dir_name, experiment_name, timezone = "Europe/St
     return tensorboard_callback
 
 def create_feature_extraction_model(feature_extractor_url, n_classes, input_shape):
-    """Creates a model, using the given feature extractor as the first N layers and adds a Dense output layer with the given number of classes.
+    """Creates a model, using the given feature extractor as the first N layers 
+        and adds a Dense output layer with the given number of classes.
 
     Args:
-        feature_extractor_url (str): The TensorFlow Hub URL to fetch the model from.
-        n_classes (int, optional): The number of neurons in the output layer. Defaults to 10.
-        input_shape (list[int], optional): Shape of the input data to the feature extractor.
+        feature_extractor_url (str): The TensorFlow Hub URL to fetch the model 
+            from.
+
+        n_classes (int, optional): The number of neurons in the output layer.
+
+        input_shape (list[int], optional): Shape of the input data to the 
+            feature extractor.
 
     Returns:
-        tensorflow.keras.models.Sequential: The Sequential model combining the feature extractor with a Dense output layer.
+        tensorflow.keras.models.Sequential: The Sequential model combining the 
+            feature extractor with a Dense output layer.
     """
     feature_extractor_layer = hub.KerasLayer(feature_extractor_url,
                                             trainable = False,
@@ -53,7 +59,7 @@ def plot_metrics(history, metrics = ['loss', 'accuracy'], include_validation_dat
         metrics (list, optional): _description_. Defaults to ['loss', 'accuracy'].
         include_validation_data (bool, optional): _description_. Defaults to True.
     """
-    epochs = range(len(history[[metrics[0]]]))
+    epochs = range(len(history[metrics[0]]))
 
     for metric in metrics:
         plt.figure()

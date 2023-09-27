@@ -7,7 +7,8 @@ def extract_zip(file_path, target_path = None):
 
     Args:
         file_path (str): File to extract.
-        target_path (str, optional): Path to put the extracted files into. Defaults to the current working directory.
+        target_path (str, optional): Path to put the extracted files into. 
+            Defaults to the current working directory.
     """
     filename = file_path.split('/')[-1]
     zip = ZipFile(filename)
