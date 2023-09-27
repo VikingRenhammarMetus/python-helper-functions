@@ -1,1 +1,1 @@
-# python-helper-functions
+Various helper functions for different types of Python projects.
