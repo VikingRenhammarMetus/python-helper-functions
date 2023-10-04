@@ -29,7 +29,7 @@ def create_tensorboard_callback(dir_name, experiment_name, timezone = "Europe/St
 def make_confusion_matrix(y_true, y_pred, classes=None, figsize=(10, 10), text_size=15, norm=False, savefig=False): 
   """
   From: https://github.com/mrdbourke/tensorflow-deep-learning/blob/main/extras/helper_functions.py
-  
+
   Makes a labelled confusion matrix comparing predictions and ground truth labels.
 
   If classes is passed, confusion matrix will be labelled, if not, integer class values
@@ -65,7 +65,7 @@ def make_confusion_matrix(y_true, y_pred, classes=None, figsize=(10, 10), text_s
   fig.colorbar(cax)
 
   # Are there a list of classes?
-  if classes:
+  if classes is not None:
     labels = classes
   else:
     labels = np.arange(cm.shape[0])
