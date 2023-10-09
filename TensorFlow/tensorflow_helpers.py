@@ -1,5 +1,4 @@
-import datetime
-import pytz
+import io, os, datetime, pytz
 
 import matplotlib.pyplot as plt
 
@@ -125,3 +124,18 @@ def plot_metrics(history, metrics = ['loss', 'accuracy'], include_validation_dat
         plt.legend()
     
     plt.show()
+
+def save_tensorboard_projector_files(path, vocab, embedding_weights):
+    os.makedirs(path, exist_ok = True)
+    
+    out_v = io.open(f"{path}/vectors.tsv", 'w', encoding='utf-8')
+    out_m = io.open(f"{path}/metadata.tsv", 'w', encoding='utf-8')
+
+    for index, word in enumerate(vocab):
+      if index == 0:
+        continue  # skip 0, it's padding.
+      vec = embedding_weights[index]
+      out_v.write('\t'.join([str(x) for x in vec]) + "\n")
+      out_m.write(word + "\n")
+    out_v.close()
+    out_m.close()
